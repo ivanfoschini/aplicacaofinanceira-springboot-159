@@ -29,10 +29,7 @@ public class Servico implements Serializable {
     @Column(name = "uri", nullable = false, unique = true, length = 255)
     private String uri;
     
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="papel_servico",
-            joinColumns={@JoinColumn(name="papel_id")},
-            inverseJoinColumns={@JoinColumn(name="servico_id")})
+    @ManyToMany(mappedBy="servicos", cascade = CascadeType.ALL)
     private List<Papel> papeis;
 
     public Long getId() {

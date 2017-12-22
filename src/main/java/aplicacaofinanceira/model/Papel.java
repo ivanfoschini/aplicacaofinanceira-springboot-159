@@ -34,6 +34,12 @@ public class Papel implements Serializable {
             joinColumns={@JoinColumn(name="usuario_id")},
             inverseJoinColumns={@JoinColumn(name="papel_id")})
     private List<Usuario> usuarios;
+    
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="papel_servico",
+            joinColumns={@JoinColumn(name="papel_id")},
+            inverseJoinColumns={@JoinColumn(name="servico_id")})
+    private List<Servico> servicos;
 
     public Papel() {}
 
@@ -59,6 +65,14 @@ public class Papel implements Serializable {
 
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
+    }
+
+    public List<Servico> getServicos() {
+        return servicos;
+    }
+
+    public void setServicos(List<Servico> servicos) {
+        this.servicos = servicos;
     }
     
     @Override
