@@ -3,9 +3,6 @@ package aplicacaofinanceira.controller;
 import aplicacaofinanceira.exception.NotFoundException;
 import aplicacaofinanceira.model.Usuario;
 import aplicacaofinanceira.util.LoginJson;
-import aplicacaofinanceira.util.LoginViews;
-import com.fasterxml.jackson.annotation.JsonView;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,8 +27,7 @@ public class LoginController extends BaseController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    @JsonView(LoginViews.LoginSimple.class)
-    public ResponseEntity<Object> login(@RequestBody @Valid LoginJson loginJson) throws JsonProcessingException, NotFoundException, NoSuchAlgorithmException {
+    public ResponseEntity<Object> login(@RequestBody LoginJson loginJson) throws JsonProcessingException, NotFoundException, NoSuchAlgorithmException {
         Usuario usuario = usuarioService.findByNomeDeUsuarioAndSenha(loginJson.getNomeDeUsuario(), loginJson.getSenha());
         
         usuarioService.setTokenEUltimoAcesso(usuario);

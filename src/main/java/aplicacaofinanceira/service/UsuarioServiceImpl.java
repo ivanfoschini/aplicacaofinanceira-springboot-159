@@ -1,7 +1,10 @@
 package aplicacaofinanceira.service;
 
 import aplicacaofinanceira.exception.NotFoundException;
+import aplicacaofinanceira.model.Papel;
+import aplicacaofinanceira.model.Servico;
 import aplicacaofinanceira.model.Usuario;
+import aplicacaofinanceira.repository.ServicoRepository;
 import aplicacaofinanceira.repository.UsuarioRepository;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -23,10 +26,34 @@ public class UsuarioServiceImpl implements UsuarioService {
     private static SecureRandom secureRandom = new SecureRandom();
 
     @Autowired
+    private ServicoRepository servicoRepository;
+    
+    @Autowired
     private UsuarioRepository usuarioRepository;
     
     @Autowired
     private MessageSource messageSource;
+    
+    @Override
+    public boolean autorizar(String requestUri, String username, String token) {
+        System.out.println(requestUri);
+        
+        Usuario usuario = usuarioRepository.findByNomeDeUsuarioAndToken(username, token);
+        Servico servico = servicoRepository.findByUri(requestUri);
+        
+        if (usuario != null && servico != null) {
+            for (Papel papelDoUsuario: usuario.getPapeis()) {
+                for (Papel papelDoServico: usuario.getPapeis()) {
+                    if (papelDoUsuario.getNome().equals(papelDoServico.getNome())) {
+                        usuario.setUltimoAcesso(new LocalDate());
+                        return true;
+                    }
+                }
+            }
+        }
+        
+        return false;
+    }
     
     @Override
     public Usuario findByNomeDeUsuarioAndSenha(String nomeDeUsuario, String senha) throws NotFoundException, NoSuchAlgorithmException {
