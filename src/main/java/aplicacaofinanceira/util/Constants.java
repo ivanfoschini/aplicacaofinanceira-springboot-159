@@ -41,4 +41,6 @@ public class Constants {
     
     public static final String ESTADO_ID = "estadoId";
     public static final String ESTADO_NOME = "estadoNome";
+    
+    public static final String TOKEN = "token";
 }
