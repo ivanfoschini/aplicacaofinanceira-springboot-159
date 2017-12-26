@@ -28,7 +28,7 @@ public class EstadoController extends BaseController {
     private EstadoService estadoService;
 
     @RequestMapping(
-            value = "/api/estados/{id}",
+            value = "/estado/delete/{id}",
             method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) throws NotFoundException {
         estadoService.delete(id);
@@ -37,7 +37,7 @@ public class EstadoController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/estados",
+            value = "/estado/list",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(EstadoViews.EstadoSimple.class)
@@ -48,7 +48,7 @@ public class EstadoController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/estados/{id}",
+            value = "/estado/show/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(EstadoViews.EstadoSimple.class)
@@ -59,7 +59,7 @@ public class EstadoController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/estados",
+            value = "/estado/save",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -77,7 +77,7 @@ public class EstadoController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/estados/{id}",
+            value = "/estado/update/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
