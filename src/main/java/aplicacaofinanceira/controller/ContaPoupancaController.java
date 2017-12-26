@@ -36,7 +36,7 @@ public class ContaPoupancaController extends BaseController {
     private AgenciaService agenciaService;
 
     @RequestMapping(
-            value = "/api/contasPoupancas/{id}",
+            value = "/contaPoupanca/delete/{id}",
             method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) throws NotEmptyCollectionException, NotFoundException {
         contaPoupancaService.delete(id);
@@ -45,7 +45,7 @@ public class ContaPoupancaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/contasPoupancas",
+            value = "/contaPoupanca/list",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(ContaPoupancaViews.ContaPoupancaSimple.class)        
@@ -56,7 +56,7 @@ public class ContaPoupancaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/contasPoupancas/{id}",
+            value = "/contaPoupanca/show/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(ContaPoupancaViews.ContaPoupancaSimple.class)    
@@ -67,7 +67,7 @@ public class ContaPoupancaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/contasPoupancas",
+            value = "/contaPoupanca/save",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -86,7 +86,7 @@ public class ContaPoupancaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/contasPoupancas/{id}",
+            value = "/contaPoupanca/update/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)

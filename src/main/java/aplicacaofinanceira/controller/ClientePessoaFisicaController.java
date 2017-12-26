@@ -38,7 +38,7 @@ public class ClientePessoaFisicaController extends BaseController {
     private ClientePessoaFisicaService clientePessoaFisicaService;    
 
     @RequestMapping(
-            value = "/api/clientesPessoasFisicas/{id}",
+            value = "/clientePessoaFisica/delete/{id}",
             method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) throws NotEmptyCollectionException, NotFoundException {
         clientePessoaFisicaService.delete(id);
@@ -47,7 +47,7 @@ public class ClientePessoaFisicaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/clientesPessoasFisicas",
+            value = "/clientePessoaFisica/list",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(ClientePessoaFisicaViews.ClientePessoaFisicaSimple.class)        
@@ -58,7 +58,7 @@ public class ClientePessoaFisicaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/clientesPessoasFisicas/{id}",
+            value = "/clientePessoaFisica/show/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(ClientePessoaFisicaViews.ClientePessoaFisicaSimple.class)    
@@ -69,7 +69,7 @@ public class ClientePessoaFisicaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/clientesPessoasFisicas",
+            value = "/clientePessoaFisica/save",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -93,7 +93,7 @@ public class ClientePessoaFisicaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/clientesPessoasFisicas/{id}",
+            value = "/clientePessoaFisica/update/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
