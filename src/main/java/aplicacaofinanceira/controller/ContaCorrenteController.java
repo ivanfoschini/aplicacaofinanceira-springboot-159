@@ -35,7 +35,7 @@ public class ContaCorrenteController extends BaseController {
     private AgenciaService agenciaService;
 
     @RequestMapping(
-            value = "/api/contasCorrentes/{id}",
+            value = "/contaCorrente/delete/{id}",
             method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) throws NotFoundException {
         contaCorrenteService.delete(id);
@@ -44,7 +44,7 @@ public class ContaCorrenteController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/contasCorrentes",
+            value = "/contaCorrente/list",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(ContaCorrenteViews.ContaCorrenteSimple.class)        
@@ -55,7 +55,7 @@ public class ContaCorrenteController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/contasCorrentes/{id}",
+            value = "/contaCorrente/show/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(ContaCorrenteViews.ContaCorrenteSimple.class)    
@@ -66,7 +66,7 @@ public class ContaCorrenteController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/contasCorrentes",
+            value = "/contaCorrente/save",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -85,7 +85,7 @@ public class ContaCorrenteController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/contasCorrentes/{id}",
+            value = "/contaCorrente/update/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)

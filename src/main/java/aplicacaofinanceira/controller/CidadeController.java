@@ -36,7 +36,7 @@ public class CidadeController extends BaseController {
     private EstadoService estadoService;
 
     @RequestMapping(
-            value = "/api/cidades/{id}",
+            value = "/cidade/delete/{id}",
             method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) throws NotEmptyCollectionException, NotFoundException {
         cidadeService.delete(id);
@@ -45,7 +45,7 @@ public class CidadeController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/cidades",
+            value = "/cidade/list",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(CidadeViews.CidadeSimple.class)        
@@ -56,7 +56,7 @@ public class CidadeController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/cidades/{id}",
+            value = "/cidade/show/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(CidadeViews.CidadeSimple.class)    
@@ -67,7 +67,7 @@ public class CidadeController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/cidades",
+            value = "/cidade/save",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -86,7 +86,7 @@ public class CidadeController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/cidades/{id}",
+            value = "/cidade/update/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
