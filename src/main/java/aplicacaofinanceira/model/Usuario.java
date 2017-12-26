@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 
 @Entity
 @Table(name = "usuario")
@@ -35,7 +35,7 @@ public class Usuario implements Serializable {
     private String token;
             
     @Column(name = "ultimo_accesso")
-    private LocalDate ultimoAcesso;
+    private LocalDateTime ultimoAcesso;
 
     @ManyToMany(mappedBy="usuarios", cascade = CascadeType.ALL)
     private List<Papel> papeis;
@@ -74,11 +74,11 @@ public class Usuario implements Serializable {
         this.token = token;
     }
 
-    public LocalDate getUltimoAcesso() {
+    public LocalDateTime getUltimoAcesso() {
         return ultimoAcesso;
     }
 
-    public void setUltimoAcesso(LocalDate ultimoAcesso) {
+    public void setUltimoAcesso(LocalDateTime ultimoAcesso) {
         this.ultimoAcesso = ultimoAcesso;
     }
 

@@ -10,7 +10,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
@@ -36,8 +36,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     
     @Override
     public boolean autorizar(String requestUri, String username, String token) {
-        System.out.println(requestUri);
-        
         Usuario usuario = usuarioRepository.findByNomeDeUsuarioAndToken(username, token);
         Servico servico = servicoRepository.findByUri(requestUri);
         
@@ -45,7 +43,10 @@ public class UsuarioServiceImpl implements UsuarioService {
             for (Papel papelDoUsuario: usuario.getPapeis()) {
                 for (Papel papelDoServico: usuario.getPapeis()) {
                     if (papelDoUsuario.getNome().equals(papelDoServico.getNome())) {
-                        usuario.setUltimoAcesso(new LocalDate());
+                        usuario.setUltimoAcesso(new LocalDateTime());
+                        
+                        usuarioRepository.save(usuario);
+                        
                         return true;
                     }
                 }
@@ -68,6 +69,25 @@ public class UsuarioServiceImpl implements UsuarioService {
         }        
         
         return usuario;
+    } 
+    
+    @Override
+    public Usuario findByNomeDeUsuario(String nomeDeUsuario) throws NotFoundException {
+        Usuario usuario = usuarioRepository.findByNomeDeUsuario(nomeDeUsuario);
+
+        if (usuario == null) {
+            throw new NotFoundException(messageSource.getMessage("usuarioNaoEncontrado", null, null));
+        }        
+        
+        return usuario;
+    }
+
+    @Override
+    public void nullifyTokenEUltimoAcesso(Usuario usuario) {
+        usuario.setToken(null);
+        usuario.setUltimoAcesso(null);
+        
+        usuarioRepository.save(usuario);
     }    
 
     @Override
@@ -75,7 +95,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         String token = generateRandonToken();
         
         usuario.setToken(token);
-        usuario.setUltimoAcesso(new LocalDate());
+        usuario.setUltimoAcesso(new LocalDateTime());
         
         usuarioRepository.save(usuario);
     }
