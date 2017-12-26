@@ -29,7 +29,7 @@ public class CorrentistaController extends BaseController {
     private CorrentistaService correntistaService;
     
     @RequestMapping(
-            value = "/api/correntistas",
+            value = "/correntista/associate",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -41,7 +41,7 @@ public class CorrentistaController extends BaseController {
     }
     
     @RequestMapping(
-            value = "/api/correntistas/findByCliente/{id}",
+            value = "/correntista/showByCliente/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(CorrentistaViews.CorrentistaSimple.class)
@@ -52,7 +52,7 @@ public class CorrentistaController extends BaseController {
     }
     
     @RequestMapping(
-            value = "/api/correntistas/findByConta/{id}",
+            value = "/correntista/showByConta/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(CorrentistaViews.CorrentistaSimple.class)
