@@ -29,7 +29,7 @@ public class BancoController extends BaseController {
     private BancoService bancoService;
 
     @RequestMapping(
-            value = "/api/bancos/{id}",
+            value = "/banco/delete/{id}",
             method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) throws NotEmptyCollectionException, NotFoundException {
         bancoService.delete(id);
@@ -38,7 +38,7 @@ public class BancoController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/bancos",
+            value = "/banco/list",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(BancoViews.BancoSimple.class)
@@ -49,7 +49,7 @@ public class BancoController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/bancos/{id}",
+            value = "/banco/show/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(BancoViews.BancoSimple.class)
@@ -60,7 +60,7 @@ public class BancoController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/bancos",
+            value = "banco/save",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -78,7 +78,7 @@ public class BancoController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/bancos/{id}",
+            value = "/banco/update/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)

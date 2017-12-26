@@ -54,7 +54,7 @@ public class AgenciaController extends BaseController {
     private EstadoService estadoService;
 
     @RequestMapping(
-            value = "/api/agencias/{id}",
+            value = "/agencia/delete/{id}",
             method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) throws NotEmptyCollectionException, NotFoundException {
         agenciaService.delete(id);
@@ -63,7 +63,7 @@ public class AgenciaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/agencias",
+            value = "/agencia/list",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(AgenciaViews.AgenciaSimple.class)        
@@ -74,7 +74,7 @@ public class AgenciaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/agencias/{id}",
+            value = "/agencia/show/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(ContaCorrenteViews.ContaCorrenteSimple.class)    
@@ -85,7 +85,7 @@ public class AgenciaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/agencias",
+            value = "/agencia/save",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -113,7 +113,7 @@ public class AgenciaController extends BaseController {
     }    
     
     @RequestMapping(
-            value = "/api/agencias/{id}",
+            value = "/agencia/update/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)

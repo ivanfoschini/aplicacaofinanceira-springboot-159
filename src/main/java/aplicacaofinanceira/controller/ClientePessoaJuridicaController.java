@@ -38,7 +38,7 @@ public class ClientePessoaJuridicaController extends BaseController {
     private ClientePessoaJuridicaService clientePessoaJuridicaService;    
 
     @RequestMapping(
-            value = "/api/clientesPessoasJuridicas/{id}",
+            value = "/clientePessoaJuridica/delete/{id}",
             method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) throws NotEmptyCollectionException, NotFoundException {
         clientePessoaJuridicaService.delete(id);
@@ -47,7 +47,7 @@ public class ClientePessoaJuridicaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/clientesPessoasJuridicas",
+            value = "/clientePessoaJuridica/list",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(ClientePessoaJuridicaViews.ClientePessoaJuridicaSimple.class)        
@@ -58,7 +58,7 @@ public class ClientePessoaJuridicaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/clientesPessoasJuridicas/{id}",
+            value = "/clientePessoaJuridica/show/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @JsonView(ClientePessoaJuridicaViews.ClientePessoaJuridicaSimple.class)    
@@ -69,7 +69,7 @@ public class ClientePessoaJuridicaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/clientesPessoasJuridicas",
+            value = "/clientePessoaJuridica/save",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -93,7 +93,7 @@ public class ClientePessoaJuridicaController extends BaseController {
     }
 
     @RequestMapping(
-            value = "/api/clientesPessoasJuridicas/{id}",
+            value = "/clientePessoaJuridica/update/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
