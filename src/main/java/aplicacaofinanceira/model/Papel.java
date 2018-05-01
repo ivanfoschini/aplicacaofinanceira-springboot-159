@@ -31,8 +31,8 @@ public class Papel implements Serializable {
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="usuario_papel",
-            joinColumns={@JoinColumn(name="usuario_id")},
-            inverseJoinColumns={@JoinColumn(name="papel_id")})
+            joinColumns={@JoinColumn(name="papel_id")},
+            inverseJoinColumns={@JoinColumn(name="usuario_id")})
     private List<Usuario> usuarios;
     
     @ManyToMany(cascade = CascadeType.ALL)
