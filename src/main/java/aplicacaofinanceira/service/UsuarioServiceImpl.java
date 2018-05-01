@@ -41,7 +41,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         
         if (usuario != null && servico != null) {
             for (Papel papelDoUsuario: usuario.getPapeis()) {
-                for (Papel papelDoServico: usuario.getPapeis()) {
+                for (Papel papelDoServico: servico.getPapeis()) {
                     if (papelDoUsuario.getNome().equals(papelDoServico.getNome())) {
                         usuario.setUltimoAcesso(new LocalDateTime());
                         
